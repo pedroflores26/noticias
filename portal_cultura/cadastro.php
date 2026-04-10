@@ -27,9 +27,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($st->fetch()) {
             $erro = 'Este e-mail já está cadastrado.';
         } else {
-            // cadastra como pendente (SEM senha)
-            $pdo->prepare("INSERT INTO usuarios (nome,email,senha,tipo,status) VALUES (?,?,NULL,'reporter','pendente')")
-                ->execute([$nome, $email]);
+
+            // 🔐 senha padrão
+            $senhaPadrao = password_hash('123456', PASSWORD_DEFAULT);
+
+            // cadastra como pendente COM senha
+            $pdo->prepare("
+                INSERT INTO usuarios (nome,email,senha,tipo,status) 
+                VALUES (?,?,?,'reporter','pendente')
+            ")->execute([$nome, $email, $senhaPadrao]);
 
             $ok = 'Cadastro realizado! Aguarde aprovação do administrador.';
         }

@@ -1,8 +1,9 @@
 <?php
+require_once 'funcoes.php';        // 🔥 PRIMEIRO
 require_once 'verifica_login.php';
 require_once 'conexao.php';
 
-$u  = sessaoUser();
+$u = sessaoUser();
 $id = filter_input(INPUT_GET,'id',FILTER_VALIDATE_INT)
    ?: filter_input(INPUT_POST,'id',FILTER_VALIDATE_INT);
 if (!$id) ir('dashboard_reporter.php');

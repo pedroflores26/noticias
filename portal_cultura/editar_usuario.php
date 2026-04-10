@@ -1,9 +1,10 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+
 }
 
 require_once 'funcoes.php';
+require_once 'verifica_login.php'; // 🔥 FALTAVA
 require_once 'conexao.php';
 
 if (!logado()) {
