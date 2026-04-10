@@ -127,16 +127,6 @@ Senha: 123456
 
 ---
 
-## 💡 Melhorias Futuras
-
-* Sistema de comentários
-* Upload de múltiplas imagens
-* Editor de texto rico
-* Dashboard com estatísticas
-* Responsividade completa
-* Tema Dark/Cyberpunk 🌃
-
----
 
 ## 👨‍💻 Autor
 
