@@ -1,58 +1,153 @@
-# 🎨 Portal de Notícias — Cultura & Arte
+# 🎭 Portal Cultura — Sistema de Notícias
 
-Portal de notícias temático sobre **Cultura e Arte**, desenvolvido em PHP com MySQL.
+Sistema web desenvolvido em **PHP + MySQL** para gerenciamento de notícias culturais, com controle de acesso entre **Administrador** e **Repórteres**.
 
-## 🎨 Identidade Visual
-- Paleta: Vinho · Dourado · Creme · Carvão
-- Tipografia: Playfair Display (títulos) + Lato (corpo)
-- Estilo editorial sofisticado
+---
 
-## 🗂️ Estrutura de Arquivos
+## 🚀 Funcionalidades
+
+### 👑 Administrador
+
+* Aprovar ou rejeitar cadastro de repórteres
+* Acessar painel administrativo
+* Gerenciar usuários
+* Visualizar notícias
+
+### 🧑‍💻 Repórter
+
+* Criar notícias
+* Editar notícias próprias
+* Excluir notícias próprias
+* Editar perfil
+
+---
+
+## 🔐 Sistema de Acesso
+
+* Login com validação de senha criptografada (`password_hash`)
+* Controle de sessão via PHP
+* Diferenciação de permissões:
+
+  * `admin`
+  * `reporter`
+* Status de usuário:
+
+  * `ativo`
+  * `pendente` (aguardando aprovação)
+
+---
+
+## 🗂️ Estrutura do Projeto
 
 ```
 portal_cultura/
-├── index.php             # Página inicial pública
-├── noticia.php           # Leitura de notícia individual
-├── login.php             # Formulário de login
-├── cadastro.php          # Criação de conta
-├── logout.php            # Encerrar sessão
-├── dashboard.php         # Painel do usuário logado
-├── nova_noticia.php      # Publicar notícia
-├── editar_noticia.php    # Editar notícia (apenas autor)
-├── excluir_noticia.php   # Excluir notícia (apenas autor)
-├── editar_usuario.php    # Editar conta do usuário
-├── excluir_usuario.php   # Excluir conta do usuário
-├── conexao.php           # Conexão PDO com o banco
-├── funcoes.php           # Funções auxiliares
-├── verifica_login.php    # Middleware de autenticação
-├── css/
-│   └── style.css         # Estilos globais
-├── imagens/              # Upload de imagens das notícias
-└── dump.sql              # Estrutura e dados do banco
+│
+├── index.php
+├── login.php
+├── cadastro.php
+├── logout.php
+│
+├── dashboard_admin.php
+├── dashboard_reporter.php
+│
+├── nova_noticia.php
+├── editar_noticia.php
+├── excluir_noticia.php
+│
+├── editar_usuario.php
+├── excluir_usuario.php
+│
+├── verifica_login.php
+├── verifica_admin.php
+├── funcoes.php
+├── conexao.php
+│
+├── noticias.php
+├── noticia.php
+│
+├── imagens/
+└── dump.sql
 ```
 
-## ⚙️ Instalação
+---
 
-1. Clone ou copie a pasta para `htdocs/` (XAMPP) ou `www/` (WAMP)
-2. Importe o banco no phpMyAdmin:
+## 🗄️ Banco de Dados
+
+### Tabelas:
+
+* `usuarios`
+* `noticias`
+
+### 👤 Usuário padrão (Admin)
+
+```
+Email: admin@email.com
+Senha: 123456
+```
+
+---
+
+## ⚙️ Tecnologias Utilizadas
+
+* PHP (procedural)
+* MySQL
+* HTML5
+* CSS3
+* XAMPP (ambiente local)
+
+---
+
+## 🧪 Como Rodar o Projeto
+
+1. Instale o XAMPP
+2. Coloque a pasta em:
+
    ```
-   Importar → dump.sql
+   htdocs/
    ```
-3. Edite `conexao.php` se necessário (usuário/senha do MySQL)
-4. Acesse `http://localhost/portal_cultura/`
+3. Inicie:
 
-## 🔑 Usuário de teste
-- **E-mail:** `marta@cultura.com`
-- **Senha:** `arte123`
+   * Apache
+   * MySQL
+4. Importe o banco (`dump.sql`) no phpMyAdmin
+5. Acesse:
 
-## 🧩 Funcionalidades
-- ✅ Cadastro, login e logout
-- ✅ Listagem pública de notícias (mais recentes primeiro)
-- ✅ Leitura de notícia individual
-- ✅ CRUD completo de notícias (apenas pelo autor)
-- ✅ Upload de imagem nas notícias
-- ✅ Edição e exclusão de conta
-- ✅ Proteção de rotas (verifica_login.php)
-- ✅ Senhas com hash bcrypt
-- ✅ Prevenção de XSS com htmlspecialchars
-- ✅ Queries seguras com PDO + prepared statements
+   ```
+   http://localhost/portal_cultura
+   ```
+
+---
+
+## 🔒 Segurança Implementada
+
+* Uso de `password_hash()` e `password_verify()`
+* Proteção de rotas com `verifica_login.php`
+* Validação de dados
+* Controle de sessão
+
+---
+
+## 💡 Melhorias Futuras
+
+* Sistema de comentários
+* Upload de múltiplas imagens
+* Editor de texto rico
+* Dashboard com estatísticas
+* Responsividade completa
+* Tema Dark/Cyberpunk 🌃
+
+---
+
+## 👨‍💻 Autor
+
+Projeto desenvolvido para fins acadêmicos.
+
+---
+
+## 📌 Observações
+
+* Apenas usuários aprovados podem acessar o sistema
+* Repórteres não podem acessar funções de administrador
+* Todas as ações são restritas por sessão
+
+---
